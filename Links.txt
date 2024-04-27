@@ -4,3 +4,9 @@ https://projecthub.arduino.cc/
 7-seg display: https://projecthub.arduino.cc/mohammadsohail0008/how-to-connect-7-segment-display-2786fe
 4 digits 7-seg: https://projecthub.arduino.cc/SAnwandter1/programming-4-digit-7-segment-led-display-5c4617
 红外遥控器-VS1838B: https://osoyoo.com/2014/12/08/decode-infrared-remote-controller-with-ir-receiver-vs1838b/
+
+TimeDate: https://forum.arduino.cc/t/datetime-library/393374
+Step Motor: https://forum.arduino.cc/t/28byj-48-4-phase-stepper-motor/1162926
+Program parallel: https://forum.arduino.cc/t/using-millis-for-timing-a-beginners-guide/483573
+                  https://forum.arduino.cc/t/how-to-program-parallel-action-using-arduino-uno/629867
+
