@@ -1,0 +1,138 @@
+#include <Stepper.h>
+
+int pinA = 2;
+int pinB = 3;
+int pinC = 4;
+int pinD = 5;
+int pinE = 6;
+int pinF = 7;
+int pinG = 8;
+int pinH = 9;
+int D1 = 14;
+int D2 = 15;
+int D3 = 16;
+int D4 = 17;
+
+void display_number(int loc = 0, int n = 0);
+
+const int stepsPerRevolution = 2038;
+Stepper myStepper = Stepper(stepsPerRevolution, 10, 12, 11, 13);
+
+// the setup routine  runs once when you press reset:
+void setup() {
+  pinMode(pinA, OUTPUT);
+  pinMode(pinB, OUTPUT);
+  pinMode(pinC, OUTPUT);
+  pinMode(pinD, OUTPUT);
+  pinMode(pinE, OUTPUT);
+  pinMode(pinF, OUTPUT);
+  pinMode(pinG, OUTPUT);
+  pinMode(D1, OUTPUT);
+  pinMode(D2, OUTPUT);
+  pinMode(D3, OUTPUT);
+  pinMode(D4, OUTPUT);
+}
+
+// the loop routine runs over  and over again forever:
+int time = 0;
+void loop() {
+  if (time % 4 == 0) display_numbers(0, 5);
+  if (time % 4 == 1) display_numbers(1, 6);
+  if (time % 4 == 2) display_numbers(2, 7);
+  if (time % 4 == 3) display_numbers(3, 8);
+
+  if (time % 2000 < 1000) {
+    myStepper.setSpeed(5);
+    myStepper.step(stepsPerRevolution);
+  }
+	
+  if (time % 2000 >= 1000) {
+	  myStepper.setSpeed(10);
+	  myStepper.step(-stepsPerRevolution);
+  }
+
+  delay(1);
+  time++;
+}
+
+int number0[8] = {0, 0, 0, 0, 0, 0, 1, 1};
+int number1[8] = {1, 0, 0, 1, 1, 1, 1, 1};
+int number2[8] = {0, 0, 1, 0, 0, 1, 0, 1};
+int number3[8] = {0, 0, 0, 0, 1, 1, 0, 1};
+int number4[8] = {1, 0, 0, 1, 1, 0, 0, 1};
+int number5[8] = {0, 1, 0, 0, 1, 0, 0, 1};
+int number6[8] = {0, 1, 0, 0, 0, 0, 0, 1};
+int number7[8] = {0, 0, 0, 1, 1, 1, 1, 1};
+int number8[8] = {0, 0, 0, 0, 0, 0, 0, 1};
+int number9[8] = {0, 0, 0, 0, 1, 0, 0, 1};
+
+void display_numbers(int loc, int n) {
+  int* display;
+  n = n % 10;
+
+  if (loc >= 4) {
+    digitalWrite(D1, LOW);
+    digitalWrite(D2, LOW);
+    digitalWrite(D3, LOW);
+    digitalWrite(D4, LOW);
+    digitalWrite(pinA, HIGH);
+    digitalWrite(pinB, HIGH);
+    digitalWrite(pinC, HIGH);
+    digitalWrite(pinD, HIGH);
+    digitalWrite(pinE, HIGH);
+    digitalWrite(pinF, HIGH);
+    digitalWrite(pinG, HIGH);
+    return;
+  }
+
+  switch(loc) {
+    case 0:
+      digitalWrite(D1, HIGH);
+      break;
+    case 1:
+      digitalWrite(D2, HIGH);
+      break;
+    case 2:
+      digitalWrite(D3, HIGH);
+      break;
+    case 3:
+      digitalWrite(D4, HIGH);
+      break;
+  }
+
+  switch(n) {
+    case 0:
+      display = number0;
+      break;
+    case 1:
+      display = number1;
+      break;
+    case 2:
+      display = number2;
+      break;
+    case 3:
+      display = number3;
+      break;
+    case 4:
+      display = number4;
+      break;
+    case 5:
+      display = number5;
+      break;
+    case 6:
+      display = number6;
+      break;
+    case 7:
+      display = number7;
+      break;
+    case 8:
+      display = number8;
+      break;
+    case 9:
+      display = number9;
+      break;
+  }
+  for (int i = 2; i <= 9; i++) {
+    digitalWrite(i, display[i - 2]);
+  }
+}
