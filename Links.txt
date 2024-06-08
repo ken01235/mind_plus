@@ -13,3 +13,4 @@ LCD1602: https://dic.vbird.tw/arduino/unit06.php
 MicroSD Module: https://www.youtube.com/watch?v=sLqgitXERLg
 Audio Player with MicroSD: https://www.instructables.com/Audio-Player-Using-Arduino-With-Micro-SD-Card/
                            https://www.youtube.com/watch?v=dV9dB435gaE&t=187s
+PCtoLCD2002 
